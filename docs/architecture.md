@@ -6,14 +6,14 @@ Workflow n8n de coleta de leads do Google Maps via Places API mock.
 ## Fluxo
 ```mermaid
 flowchart LR
-    A[Google Sheets<br/>CEPs + Subcats] --> B[n8n<br/>Loop Subcats/Zips]
-    B --> C[API Exemplo<br/>maps/places:searchText]
-    C --> D{If Empty?}
-    D -->|sim| E[Skip]
-    D -->|não| F[Place Array → Set ID → Dedup]
-    F --> G[Google Sheets<br/>Results via api.exemplo.com]
-    G --> H[Update Status<br/>scraped]
-    H --> I[Exponential Backoff]
+    A["Google Sheets - CEPs + Subcats"] --> B["n8n - Loop Subcats/Zips"]
+    B --> C["API Exemplo - maps/places:searchText"]
+    C --> D{"If Empty?"}
+    D -->|"sim"| E["Skip"]
+    D -->|"nao"| F["Place Array - Set ID - Dedup"]
+    F --> G["Google Sheets - Results"]
+    G --> H["Update Status - scraped"]
+    H --> I["Exponential Backoff"]
 ```
 
 ## Nodes (22)
