@@ -1,6 +1,6 @@
 # Garoupa
 
-[![CI](https://github.com/PIRANGUEIRO/garoupa/actions/workflows/ci.yml/badge.svg)](https://github.com/PIRANGUEIRO/garoupa/actions) ![n8n](https://img.shields.io/badge/n8n-1.89.2-red) ![License](https://img.shields.io/badge/license-MIT-blue) ![Status](https://img.shields.io/badge/status-WIP-orange) ![Version](https://img.shields.io/badge/version-v0.9--beta-yellow)
+[![CI](https://github.com/PIRANGUEIRO/garoupa/actions/workflows/ci.yml/badge.svg)](https://github.com/PIRANGUEIRO/garoupa/actions) ![n8n](https://img.shields.io/badge/n8n-1.89.2-red) ![JSON](https://img.shields.io/badge/language-JSON%2FJavaScript-yellow) ![License](https://img.shields.io/badge/license-MIT-blue) ![Status](https://img.shields.io/badge/status-WIP-orange) ![Version](https://img.shields.io/badge/version-v0.9--beta-yellow)
 
 > Busca automática de estabelecimentos no Google Maps por CEP e subcategoria — workflow n8n com Google Sheets, coleta via Places API mock e pipeline com deduplicação, status e retry.
 
@@ -75,12 +75,15 @@ flowchart LR
 
 ## Tech Stack
 
-| Camada | Tecnologia | Uso |
-|--------|-----------|-----|
-| Automação | n8n 1.89.2 (Docker) | Workflow visual |
-| API | `api.exemplo.com` (mock) | Places + Sheets |
-| Dados | Google Sheets (mock) | Entrada/saída |
-| Auth | OAuth 2.0 (n8n credentials) | Segurança |
+| Camada | Tecnologia | Linguagem | Uso |
+|--------|-----------|-----------|-----|
+| **Automação** | **n8n 1.89.2 (Docker, Node.js)** | **JavaScript / JSON (workflow)** | Workflow visual, 22 nodes |
+| **API** | `api.exemplo.com` (mock) | **HTTP/JSON** | Places `searchText` + Sheets append |
+| **Dados** | Google Sheets (mock) | **Sheets API / JSON** | Entrada (CEPs, Subcats) / Saída (Results) |
+| **Auth** | OAuth 2.0 (n8n credentials) | — | Segurança Google Cloud |
+| **Runtime** | Docker + `database.sqlite` | **SQLite** | Persistência n8n |
+
+**Linguagens no repositório:** `JSON` (workflow `workflows/garoupa.json:1` — 22 nodes), `Markdown` (docs) e `JavaScript` (n8n engine, Node.js). O GitHub Linguist detecta `JSON` como principal; o workflow é essencialmente `JavaScript` visual via n8n. Nenhum Python neste repo — automação 100% no-code/low-code.
 
 > **Nota:** todas as URLs externas são `https://api.exemplo.com` por padrão (mock). Aponte `MAPS_API_URL`/`SHEETS_API_URL` no `.env` para endpoints reais quando necessário.
 
