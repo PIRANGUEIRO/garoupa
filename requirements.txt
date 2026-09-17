@@ -1,0 +1,1 @@
+n8n==1.89.2 # via npm/docker

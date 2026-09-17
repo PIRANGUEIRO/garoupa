@@ -1,0 +1,100 @@
+{
+  "name": "Garoupa — Busca de Leads (Google Maps)",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger"
+    },
+    {
+      "id": "2",
+      "name": "Schedule (Cron)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "notes": "A cada hora"
+    },
+    {
+      "id": "3",
+      "name": "Settings (Config)",
+      "type": "n8n-nodes-base.set",
+      "parameters": {
+        "gs_url": "https://api.exemplo.com/sheets/1ABC...",
+        "catSheet": "Google Maps Categories",
+        "sheet": "CEPs"
+      }
+    },
+    {
+      "id": "4",
+      "name": "GS - Get Subcategory",
+      "type": "n8n-nodes-base.googleSheets",
+      "operation": "read",
+      "doc": "Lê subcategorias"
+    },
+    {
+      "id": "5",
+      "name": "GS - Get Zip Codes",
+      "type": "n8n-nodes-base.googleSheets",
+      "operation": "read",
+      "doc": "Lê CEPs"
+    },
+    {
+      "id": "6",
+      "name": "Loop Subcats",
+      "type": "n8n-nodes-base.splitInBatches"
+    },
+    {
+      "id": "7",
+      "name": "Loop Zips",
+      "type": "n8n-nodes-base.splitInBatches"
+    },
+    {
+      "id": "8",
+      "name": "GMaps API",
+      "type": "n8n-nodes-base.httpRequest",
+      "url": "https://api.exemplo.com/maps/places:searchText",
+      "method": "POST",
+      "auth": "OAuth 2.0 mock"
+    },
+    {
+      "id": "9",
+      "name": "If Empty",
+      "type": "n8n-nodes-base.if"
+    },
+    {
+      "id": "10",
+      "name": "Place Array",
+      "type": "n8n-nodes-base.set"
+    },
+    {
+      "id": "11",
+      "name": "Set Place ID",
+      "type": "n8n-nodes-base.set"
+    },
+    {
+      "id": "12",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates"
+    },
+    {
+      "id": "13",
+      "name": "Add rows in Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "operation": "append",
+      "url": "https://api.exemplo.com/sheets/append"
+    },
+    {
+      "id": "14",
+      "name": "Update Status to Success",
+      "type": "n8n-nodes-base.googleSheets"
+    },
+    {
+      "id": "15",
+      "name": "Exponential Backoff",
+      "type": "n8n-nodes-base.wait"
+    }
+  ],
+  "meta": {
+    "workflowId": "GlL8pHZGLU0FRn19 (mock)",
+    "n8nVersion": "v1.89.2",
+    "mockNote": "Todas as URLs são https://api.exemplo.com (mock configurável via .env)"
+  }
+}

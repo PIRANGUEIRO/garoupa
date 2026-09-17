@@ -1,0 +1,10 @@
+{
+  "cep": "01310-100",
+  "subcategoria": "Farmácia",
+  "status": "Todos",
+  "url": "https://api.exemplo.com/maps/places:searchText",
+  "body": {
+    "textQuery": "Farmácia em 01310-100",
+    "languageCode": "pt-BR"
+  }
+}

@@ -1,0 +1,17 @@
+# n8n
+.n8n/
+n8n_data/
+*.sqlite
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+*.tokens.json
+
+# IDE
+.vscode/
+.idea/

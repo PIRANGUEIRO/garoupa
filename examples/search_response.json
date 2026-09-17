@@ -1,0 +1,32 @@
+{
+  "places": [
+    {
+      "title": "Restaurante Bom Sabor",
+      "phone": "(11) 3333-4444",
+      "rating": 4.5,
+      "address": "Bela Vista, SP",
+      "types": [
+        "restaurant",
+        "food"
+      ],
+      "zip": "01310-100",
+      "subcategoria": "Restaurante"
+    },
+    {
+      "title": "Clínica Saúde Total",
+      "phone": "(11) 4444-5555",
+      "rating": 4.8,
+      "address": "Vila Olímpia, SP",
+      "types": [
+        "health"
+      ],
+      "zip": "01310-100",
+      "subcategoria": "Clínica"
+    }
+  ],
+  "meta": {
+    "total": 1247,
+    "comTelefone": 892,
+    "comAvaliacao": 1104
+  }
+}

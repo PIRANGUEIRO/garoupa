@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate workflow
+        run: |
+          cat workflows/garoupa.json | python3 -m json.tool > /dev/null && echo "JSON OK"
+          ! grep -r "places.googleapis.com" . --include="*.json" --include="*.md" || (echo "Real API found!" && exit 1)
+          ! grep -r "sheets.googleapis.com" . --include="*.json" --include="*.md" | grep -v "api.exemplo.com" || (echo "Real API found!" && exit 1)
+          echo "No real APIs"
+      - name: Check images
+        run: ls -lh docs/images/
