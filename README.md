@@ -1,6 +1,7 @@
 # Garoupa
 
 [![CI](https://github.com/PIRANGUEIRO/garoupa/actions/workflows/ci.yml/badge.svg)](https://github.com/PIRANGUEIRO/garoupa/actions) ![n8n](https://img.shields.io/badge/n8n-1.89.2-red) ![JSON](https://img.shields.io/badge/language-JSON%2FJavaScript-yellow) ![License](https://img.shields.io/badge/license-MIT-blue) ![Status](https://img.shields.io/badge/status-WIP-orange) ![Version](https://img.shields.io/badge/version-v0.9--beta-yellow)
+![n8n](https://img.shields.io/badge/n8n-1.89.2-EA4B71) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E) ![JSON](https://img.shields.io/badge/JSON-workflow-000000) ![Markdown](https://img.shields.io/badge/Markdown-docs-lightgrey)
 
 > Busca automática de estabelecimentos no Google Maps por CEP e subcategoria — workflow n8n com Google Sheets, coleta via Places API mock e pipeline com deduplicação, status e retry.
 
